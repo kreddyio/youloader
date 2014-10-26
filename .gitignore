@@ -1,1 +1,6 @@
-log.txt # ignore log file generated while fetching data.
+*.txt # ignore log file generated while fetching data.
+# ignore any video files downloaded
+*.webm
+*.flv
+*.mp4
+*.webm
