@@ -9,17 +9,20 @@ import time
 from threading import Thread
 
 
-def ret_enc_fmt(url): # returns the encod
+def ret_enc_fmt(url): # returns the encoded info
 
 	q = re.split('v=',url)[1]
 	if '&' in q:
 		q = q[:q.index('&')-1]
 	a = ''
 	buf = ''
-	print 'Fetching the video info...'
+	cnt = 0
+	print 'Fetching the video info...(might take a while)'
 	while not 'url_encoded_fmt_stream_map=itag' in a:
 		try:
-			time.sleep(0.5)
+			cnt += 1
+			# print cnt
+			# time.sleep(0.5)
 			try:
 				buf = urllib2.urlopen('https://www.youtube.com/get_video_info?&video_id='+q).read()
 			except:
@@ -28,12 +31,13 @@ def ret_enc_fmt(url): # returns the encod
 		except KeyboardInterrupt:
 			print 'Exiting...'
 			sys.exit(1)
+	print cnt
 	return a
 
 
 def parse(fin):
 
-	print 'Parsing the info for video urls'
+	print 'Parsing the info for video urls...'
 	i = fin.index('url_encoded_fmt_stream_map=itag')
 	i1 = fin.index('adaptive_fmts')
 	if i1>i:
