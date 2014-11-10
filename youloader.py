@@ -17,7 +17,7 @@ def ret_enc_fmt(url): # returns the encoded info
 	a = ''
 	buf = ''
 	cnt = 0
-	print 'Fetching the video info...(might take a while)'
+	print 'Fetching the video info (might take a while)...'
 	while not 'url_encoded_fmt_stream_map=itag' in a:
 		try:
 			cnt += 1
