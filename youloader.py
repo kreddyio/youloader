@@ -7,6 +7,7 @@ import re
 import sys
 import time
 from threading import Thread
+import HTMLParser
 
 
 def ret_enc_fmt(url): # returns the encoded info
@@ -137,7 +138,9 @@ def gettitle(url):
 	data = site.read()
 	site.close()
 	title = re.findall(r'<title>(.*?)</title>',data)
-	return title[0]
+	hp = HTMLParser.HTMLParser()
+	name = hp.unescape(title[0])
+	return name
 
 
 def progressbar(filename, size):
