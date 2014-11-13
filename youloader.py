@@ -223,7 +223,10 @@ def main():
 		types.append(gettype(i))
 		qual.append(getquality(i))
 		urls.append(l[1])
-		sizes.append(prettify(getsize(l[1])))
+		try:
+			sizes.append(prettify(getsize(l[1])))
+		except:
+			sizes.append(0)
 
 	print 'Found',n,'videos associated with the link. Ordering them as follows:'
 	print 'id\tquality\ttype\tsize'
