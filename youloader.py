@@ -14,11 +14,12 @@ def ret_enc_fmt(url): # returns the encoded info
 
 	q = re.split('v=',url)[1]
 	if '&' in q:
-		q = q[:q.index('&')-1]
+		q = q[:q.index('&')]
 	a = ''
 	buf = ''
 	cnt = 0
 	print 'Fetching the video info (might take a while)...'
+	print 'Videoid -- '+q
 	while not 'url_encoded_fmt_stream_map=itag' in a:
 		try:
 			cnt += 1
