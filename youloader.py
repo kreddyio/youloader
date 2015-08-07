@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from bs4 import BeautifulSoup as bs
 import re
 import urllib2
@@ -117,7 +118,8 @@ def main(url):
 	while progress != 100:
 		time.sleep(2)
 		progress = 100 * os.path.getsize(dest)/float(sz)
-		sys.stdout.write("\r [%s] %0.2f%% done of %s" % ("#"*int(progress/10), progress,size))
+		sys.stdout.write("\r [%s%s] %0.2f%% done of %s" % ("#"*int(progress/10),
+                    "-"*(10-int(progress/10)),progress,size))
 		sys.stdout.flush()
 	dl.join()
 	print '\nDownload Finished.\n'
